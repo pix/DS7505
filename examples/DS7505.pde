@@ -18,7 +18,7 @@ void setup()
     //initializes temp sensor with 12 bit resolution
     //the I2C address is 0 0 0 in this case
     //(pin 5, 6, 7 are tied to ground)
-    ds7505.init(0,0,0,12);
+    ds7505.init(0,0,0,DS7505::RES_12);
 
     //set the thermostat at 32.45 (Celsius) with a hysteresis of 30.14 degree
     ds7505.setThermostatC(32.45f, 30.14f, DS7505::FT_6);
