@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Main Page</title>
+<title>DS7505: DS7505 Library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -14,6 +14,17 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
 <div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">DS7505</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
@@ -38,9 +49,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div>
+<div class="header">
+  <div class="headertitle">
+<h1><a class="el" href="classDS7505.html">DS7505</a> Library </h1>  </div>
+</div>
 <div class="contents">
-<div class="textblock"><p><a class="el" href="classDS7505.html">DS7505</a> Library for use with MAXIM's <a class="el" href="classDS7505.html">DS7505</a>: <a href="http://www.maxim-ic.com/datasheet/index.mvp/id/5730">http://www.maxim-ic.com/datasheet/index.mvp/id/5730</a> Originaly written by Kerry D. Wong: <a href="http://www.kerrywong.com">http://www.kerrywong.com</a> 3/2011 </p>
-</div></div>
+<div class="textblock"><p>For use with MAXIM's <a class="el" href="classDS7505.html">DS7505</a>: <a href="http://www.maxim-ic.com/datasheet/index.mvp/id/5730">http://www.maxim-ic.com/datasheet/index.mvp/id/5730</a> Originaly written by Kerry D. Wong: <a href="http://www.kerrywong.com">http://www.kerrywong.com</a> 3/2011</p>
+<div class="fragment"><pre class="fragment">  <a class="code" href="classDS7505.html">DS7505</a> ds7505;
+
+  Wire.begin();
+  <span class="comment">// Initializes temp sensor with 12 bit resolution</span>
+  <span class="comment">// the I2C address is 0 0 0 in this case</span>
+  <span class="comment">// (pin 5, 6, 7 are tied to ground)</span>
+  ds7505.<a class="code" href="classDS7505.html#ac55b507f2035d02dbd67b8a753de4cc8" title="initialization">init</a>(0, 0, 0, <a class="code" href="classDS7505.html#ab5953748e430c3b62fcae7ab99be9562a01cfe0de7946383251e36a5dd845a846">DS7505::RES_12</a>);
+
+  <span class="comment">// Set the thermostat at 32.45 (Celsius) with a hysteresis of 30.14 degree</span>
+  ds7505.<a class="code" href="classDS7505.html#ad2352936999d7059475f4ac36d4c00dd" title="Sets the thermostat trip temperature in Celsius */.">setThermostatC</a>(32.45f, 30.14f, <a class="code" href="classDS7505.html#af8c72ee6a0d75b4e2f4ddc281c2082eba959d66b575d28d3f9bd8ec010553824c">DS7505::FT_6</a>);
+
+  <span class="comment">// The temperatures read back will be slightly off depending on the resolution</span>
+  <span class="comment">// settings</span>
+  Serial.println(ds7505.<a class="code" href="classDS7505.html#a70ffd1abffc34ac06b35c59b392af884" title="Get the current temperature in Celsius. */.">getTempC</a>(DS7505::P_TOS));
+  Serial.println(ds7505.<a class="code" href="classDS7505.html#a70ffd1abffc34ac06b35c59b392af884" title="Get the current temperature in Celsius. */.">getTempC</a>(DS7505::P_THYST));
+
+  <span class="comment">// Make the settings permanent (write to NV memory)</span>
+  ds7505.<a class="code" href="classDS7505.html#ac3eefee95426859cc4243a63192d94ed" title="Send a command.">sendCommand</a>(DS7505::CMD_COPY_DATA);
+
+  Serial.println(ds7505.<a class="code" href="classDS7505.html#a6f3030abbe8b34d20dbe828acda869be" title="Get the current temperature in Fahrenheit */.">getTempF</a>());
+</pre></div> </div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -55,7 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat May 14 2011 13:14:39 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat May 14 2011 13:54:04 for DS7505 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

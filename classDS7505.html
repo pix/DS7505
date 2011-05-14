@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>DS7505 Class Reference</title>
+<title>DS7505: DS7505 Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -14,6 +14,17 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 --></script>
 <div id="top">
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">DS7505</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
@@ -203,7 +214,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Get the temperature specified by refPdef in Celsius */. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">regPdef,:</td><td>P_TEMP: get temperature in Celsius P_THYST: get hysteresis temperature P_OS: get trip temperature </td></tr>
+    <tr><td class="paramname">regPdef</td><td>P_TEMP: get temperature in Celsius P_THYST: get hysteresis temperature P_OS: get trip temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -228,7 +239,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Get the temperature specified by regPdef in Fahrenheit */. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">regPdef,:</td><td>P_TEMP: get temperature in Celsius P_THYST: get hysteresis temperature P_OS: get trip temperature </td></tr>
+    <tr><td class="paramname">regPdef</td><td>P_TEMP: get temperature in Celsius P_THYST: get hysteresis temperature P_OS: get trip temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -275,10 +286,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>initialization </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">a2,:</td><td>MSB of the hardware configured I2C address </td></tr>
-    <tr><td class="paramname">a1,:</td><td>Bit a1 of the hardware configured I2C address </td></tr>
-    <tr><td class="paramname">a0,:</td><td>LSB of the hardware configured I2C address </td></tr>
-    <tr><td class="paramname">res,:</td><td>The temperature resolution (9, 10, 11 or 12 bits) </td></tr>
+    <tr><td class="paramname">a2</td><td>MSB of the hardware configured I2C address </td></tr>
+    <tr><td class="paramname">a1</td><td>Bit a1 of the hardware configured I2C address </td></tr>
+    <tr><td class="paramname">a0</td><td>LSB of the hardware configured I2C address </td></tr>
+    <tr><td class="paramname">res</td><td>The temperature resolution (9, 10, 11 or 12 bits) </td></tr>
   </table>
   </dd>
 </dl>
@@ -303,7 +314,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Sets the configuration register. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">configByte,:</td><td>NVB: NV Memory Status R1: Conversion Resolution Bit 1 R2: Conversion Resolution Bit 2 F1: Thermostat Fault Tolerance Bit 1 F2: Thermostat Fault Tolerance Bit 2 POL: Thermostat Output (O.S.) Polarity TM: Thermostat Operating Mode SD: Shutdown [ NVB R1 R0 F1 F0 POL TM SD] (see <a class="el" href="classDS7505.html">DS7505</a> data-sheet) </td></tr>
+    <tr><td class="paramname">configByte</td><td>NVB: NV Memory Status R1: Conversion Resolution Bit 1 R2: Conversion Resolution Bit 2 F1: Thermostat Fault Tolerance Bit 1 F2: Thermostat Fault Tolerance Bit 2 POL: Thermostat Output (O.S.) Polarity TM: Thermostat Operating Mode SD: Shutdown [ NVB R1 R0 F1 F0 POL TM SD] (see <a class="el" href="classDS7505.html">DS7505</a> data-sheet) </td></tr>
   </table>
   </dd>
 </dl>
@@ -344,9 +355,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Sets the thermostat temperature in Celsius. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">tos,:</td><td>trip temperature </td></tr>
-    <tr><td class="paramname">thyst,:</td><td>hysteresis temperature </td></tr>
-    <tr><td class="paramname">ft,:</td><td>fault tolerance (consecutive out-of-limits conversions before tripping) </td></tr>
+    <tr><td class="paramname">tos</td><td>trip temperature </td></tr>
+    <tr><td class="paramname">thyst</td><td>hysteresis temperature </td></tr>
+    <tr><td class="paramname">ft</td><td>fault tolerance (consecutive out-of-limits conversions before tripping) </td></tr>
   </table>
   </dd>
 </dl>
@@ -372,7 +383,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Hysteresis is set to be 5 degree below trip temperature </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">t,:</td><td>The temperature </td></tr>
+    <tr><td class="paramname">t</td><td>The temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -407,8 +418,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Sets the thermostat temperature in Celsius. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">tos,:</td><td>trip temperature </td></tr>
-    <tr><td class="paramname">thyst,:</td><td>hysteresis temperature </td></tr>
+    <tr><td class="paramname">tos</td><td>trip temperature </td></tr>
+    <tr><td class="paramname">thyst</td><td>hysteresis temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -443,8 +454,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Sets the thermostat temperature in Fahrenheit. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">tos,:</td><td>trip temperature </td></tr>
-    <tr><td class="paramname">thyst,:</td><td>hysteresis temperature </td></tr>
+    <tr><td class="paramname">tos</td><td>trip temperature </td></tr>
+    <tr><td class="paramname">thyst</td><td>hysteresis temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -470,7 +481,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Hysteresis is set to be 5 degree below trip temperature </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">t,:</td><td>The temperature </td></tr>
+    <tr><td class="paramname">t</td><td>The temperature </td></tr>
   </table>
   </dd>
 </dl>
@@ -511,9 +522,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Sets the thermostat temperature in Fahrenheit. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">tos,:</td><td>trip temperature </td></tr>
-    <tr><td class="paramname">thyst,:</td><td>hysteresis temperature </td></tr>
-    <tr><td class="paramname">ft,:</td><td>fault tolerance (consecutive out-of-limits conversions before tripping) </td></tr>
+    <tr><td class="paramname">tos</td><td>trip temperature </td></tr>
+    <tr><td class="paramname">thyst</td><td>hysteresis temperature </td></tr>
+    <tr><td class="paramname">ft</td><td>fault tolerance (consecutive out-of-limits conversions before tripping) </td></tr>
   </table>
   </dd>
 </dl>
@@ -539,7 +550,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Sat May 14 2011 13:14:39 by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Sat May 14 2011 13:54:04 for DS7505 by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
