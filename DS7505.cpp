@@ -24,7 +24,7 @@ void DS7505::init(uint8_t a2, uint8_t a1, uint8_t a0, DS7505::Resolution res)
 //bit 2: POL (Thermostat Output Polarity)
 //bit 1: TM (Thermostat Operating Mode)
 //bit 0: SD (Shutdown)
-void DS7505::setConfigRegister(byte configByte)
+void DS7505::setConfigRegister(uint8_t configByte)
 {
   Wire.beginTransmission(_i2cAddr);
   Wire.send(P_CONF);
@@ -36,7 +36,7 @@ void DS7505::setConfigRegister(byte configByte)
 //	CMD_RECALL_DATA
 //	CMD_COPY_DATA
 //	CMD_POR
-void DS7505::sendCommand(byte cmdSet)
+void DS7505::sendCommand(uint8_t cmdSet)
 {
   Wire.beginTransmission(_i2cAddr);
   Wire.send(cmdSet);
@@ -56,14 +56,14 @@ float DS7505::getTemp(DS7505::Register regPdef)
 
   while (!Wire.available()) {  };
 
-  byte h = Wire.receive();
+  uint8_t h = Wire.receive();
 
   while (!Wire.available()) {  };
 
-  byte l = Wire.receive();
+  uint8_t l = Wire.receive();
   Wire.endTransmission();
 
-  if (h & 0x80 == 0x80) {
+  if ((h & 0x80) == 0x80) {
     s = -1.0;
     h = h & 0x7f;
   }
@@ -85,16 +85,16 @@ void DS7505::setThermostat(float tos, float thyst, FaultTolerance ft)
 {
   if (tos < thyst || tos < -55.0 || thyst < -55.0 || tos > 125.0 || thyst > 125.0) return;
   float tosr, thystr;
-  byte tos_h, tos_l, thyst_h, thyst_l;
+  uint8_t tos_h, tos_l, thyst_h, thyst_l;
 
   tos_l = 0;
   thyst_l = 0;
 
   if (tos >= 0) {
-    tos_h = (byte) tos;
+    tos_h = (uint8_t) tos;
   }
   else {
-    tos_h = 0x80 & (byte) abs(tos);
+    tos_h = 0x80 & (uint8_t) abs(tos);
   }
 
   tosr = fabs((double) tos) -  (int) abs(tos);
@@ -119,10 +119,10 @@ void DS7505::setThermostat(float tos, float thyst, FaultTolerance ft)
   }
 
   if (thyst >= 0) {
-    thyst_h = (byte) thyst;
+    thyst_h = (uint8_t) thyst;
   }
   else {
-    thyst_h = 0x80 & (byte) abs(thyst);
+    thyst_h = 0x80 & (uint8_t) abs(thyst);
   }
 
   thystr = fabs((double) thyst) - (int) abs(thyst);

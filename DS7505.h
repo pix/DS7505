@@ -113,28 +113,28 @@ public:
    * Hysteresis is set to be 5 degree below trip temperature
    * \param t The temperature
    */
-  float setThermostatC(float t) { setThermostatC(t, t - 5.0); }
+  void setThermostatC(float t) { setThermostatC(t, t - 5.0); }
 
   //! Sets the thermostat temperature in Fahrenheit
   /*!
    * Hysteresis is set to be 5 degree below trip temperature
    * \param t The temperature
    */
-  float setThermostatF(float t) { setThermostatF(t, t - 5.0); }
+  void setThermostatF(float t) { setThermostatF(t, t - 5.0); }
 
   //! Sets the thermostat temperature in Celsius
   /*!
    * \param tos trip temperature
    * \param thyst hysteresis temperature
    */
-  float setThermostatC(float tos, float thyst) { setThermostatC(tos, thyst, FT_1); }
+  void setThermostatC(float tos, float thyst) { setThermostatC(tos, thyst, FT_1); }
 
   //! Sets the thermostat temperature in Fahrenheit
   /*!
    * \param tos trip temperature
    * \param thyst hysteresis temperature
    */
-  float setThermostatF(float tos, float thyst) { setThermostatF(tos, thyst, FT_1); }
+  void setThermostatF(float tos, float thyst) { setThermostatF(tos, thyst, FT_1); }
 
   //! Sets the thermostat temperature in Celsius
   /*!
@@ -142,7 +142,7 @@ public:
    * \param thyst hysteresis temperature
    * \param ft fault tolerance (consecutive out-of-limits conversions before tripping)
    */
-  float setThermostatC(float tos, float thyst, FaultTolerance ft) { setThermostat(tos, thyst, ft); }
+  void setThermostatC(float tos, float thyst, FaultTolerance ft) { setThermostat(tos, thyst, ft); }
 
   //! Sets the thermostat temperature in Fahrenheit
   /*!
@@ -150,7 +150,7 @@ public:
    * \param thyst hysteresis temperature
    * \param ft fault tolerance (consecutive out-of-limits conversions before tripping)
    */
-  float setThermostatF(float tos, float thyst, FaultTolerance ft) { setThermostat((tos - 32.0) * 5.0 / 9.0, (thyst - 32.0) * 5.0 / 9.0, ft); }
+  void setThermostatF(float tos, float thyst, FaultTolerance ft) { setThermostat((tos - 32.0) * 5.0 / 9.0, (thyst - 32.0) * 5.0 / 9.0, ft); }
 
   //! Sets the configuration register
   /*!
@@ -165,16 +165,16 @@ public:
    *   SD: Shutdown
    *   [ NVB R1 R0 F1 F0 POL TM SD] (see DS7505 data-sheet)
    */
-  void setConfigRegister(byte configByte);
+  void setConfigRegister(uint8_t configByte);
 
   //! Send a command
-  /*
+  /*!
    * \param cmdSet
    * 	CMD_RECALL_DATA
    * 	CMD_COPY_DATA
    * 	CMD_POR
    */
-  void sendCommand(byte cmdSet);
+  void sendCommand(uint8_t cmdSet);
 
   //! initialization
   /*!
