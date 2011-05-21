@@ -1,8 +1,19 @@
 #ifndef DS7505_H
 #define DS7505_H
 
+#if defined(ARDUINO)
+#define DS7505_ARDUINO
+#elif defined(BOARD_maple) \
+  || defined(BOARD_maple_RET6) \
+  || defined(BOARD_maple_mini) \
+  || defined(BOARD_maple_native)
+#define DS7505_MAPLE
+#endif
+
 #include <inttypes.h>
-#include <WProgram.h>
+#if defined(ARDUINO)
+#include <WProgram.h> // Needed for abs()
+#endif
 
 /*! \mainpage DS7505 Library
  *
